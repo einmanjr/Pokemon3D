@@ -29,11 +29,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARImageTrackingConfiguration()
+        let configuration = ARWorldTrackingConfiguration()
         
         if let imageToTrack = ARReferenceImage.referenceImages(inGroupNamed: "Pokemon Cards", bundle: Bundle.main){
         
-            configuration.trackingImages = imageToTrack
+            configuration.detectionImages = imageToTrack
             configuration.maximumNumberOfTrackedImages = 2
             
             print("found card match")
@@ -56,20 +56,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
          let node = SCNNode()
         
         if let imageAnchor = anchor as? ARImageAnchor{
-            
+                        
             let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
             
-            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.6) //OPACITY
+            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.5) //OPACITY
             
             let planeNode = SCNNode(geometry: plane)
             planeNode.eulerAngles.x = -Float.pi / 2
             node.addChildNode(planeNode)
             
-            if let pokeScene = SCNScene(named: "art.scnassets/Oddish.scn"){
-                if let pokeNode = pokeScene.rootNode.childNodes.first {
-                    pokeNode.eulerAngles.x = Float.pi / 2
-                    planeNode.addChildNode(pokeNode)
-                    
+            if imageAnchor.referenceImage.name == "OddishBUS4"{
+                if let pokeScene = SCNScene(named: "art.scnassets/Oddish.scn"){
+                    if let pokeNode = pokeScene.rootNode.childNodes.first {
+                        pokeNode.eulerAngles.x = Float.pi / 2
+                        planeNode.addChildNode(pokeNode)
+                    }
+                }
+            }
+            
+            if imageAnchor.referenceImage.name == "EeveeUPR104"{
+                if let pokeScene = SCNScene(named: "art.scnassets/Oddish.scn"){
+                    if let pokeNode = pokeScene.rootNode.childNodes.first {
+                        pokeNode.eulerAngles.x = Float.pi / 2
+                        planeNode.addChildNode(pokeNode)
+                    }
                 }
             }
         }
