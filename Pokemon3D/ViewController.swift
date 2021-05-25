@@ -65,19 +65,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             planeNode.eulerAngles.x = -Float.pi / 2
             node.addChildNode(planeNode)
             
-            if imageAnchor.referenceImage.name == "OddishBUS4"{
-                if let pokeScene = SCNScene(named: "art.scnassets/Oddish.scn"){
+            if imageAnchor.referenceImage.name == "Spearow"{
+                if let pokeScene = SCNScene(named: "art.scnassets/Spearow.scn"){
                     if let pokeNode = pokeScene.rootNode.childNodes.first {
-                        pokeNode.eulerAngles.x = Float.pi / 2
+                        pokeNode.eulerAngles.x = .pi / 2
                         planeNode.addChildNode(pokeNode)
                     }
                 }
             }
             
-            if imageAnchor.referenceImage.name == "EeveeUPR104"{
-                if let pokeScene = SCNScene(named: "art.scnassets/Oddish.scn"){
+            if imageAnchor.referenceImage.name == "Snorlax"{
+                if let pokeScene = SCNScene(named: "art.scnassets/Snorlax.scn"){
                     if let pokeNode = pokeScene.rootNode.childNodes.first {
-                        pokeNode.eulerAngles.x = Float.pi / 2
+                        pokeNode.eulerAngles.x = .pi / 2
                         planeNode.addChildNode(pokeNode)
                     }
                 }
